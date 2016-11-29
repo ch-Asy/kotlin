@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import org.jetbrains.anko.async
+import org.jetbrains.anko.find
+import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
     private val items = listOf(
@@ -22,7 +25,21 @@ class MainActivity : AppCompatActivity() {
         val forecastList = findViewById(R.id.forecast_list) as RecyclerView
         forecastList.layoutManager=LinearLayoutManager(this)
         forecastList.adapter=ForecastListAdapter(items);
+        //anko获取组件
+        val recycler : RecyclerView=find(R.id.forecast_list)
 
+        val data1=Data类("小明","18")
+        val data2=data1.copy(name = "小红")
+        val (name,age)=data1
+//        val name=data1.component1()
+//        val age=data1.component2()
+
+        async() {
+            val url=""
+            Request(url).run()
+            uiThread {" ....." }
+
+        }
     }
 }
 

@@ -26,3 +26,4 @@ init {
 abstract class Animal(name: String)
 
 class Child(name: String, age: Int) : Animal(name)
+
