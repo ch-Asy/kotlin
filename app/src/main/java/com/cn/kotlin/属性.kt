@@ -13,8 +13,8 @@ fun main(args: Array<String>) {
 }
 public class Person2{
     var name="";
-    get() = field.toUpperCase()
-    set(value) {
-        field = "String: $value"
-    }
+//    get() = field.toUpperCase()
+//    set(value) {
+//        field = "String: $value"
+//    }
 }

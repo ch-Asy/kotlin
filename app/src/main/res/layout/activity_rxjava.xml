@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.cn.kotlin.RxjavaActivity">
+
+    <Button
+        android:id="@+id/subscribe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="subscribe" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/forecast_list"
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:behavior_hideable="true"
+        android:background="@color/colorAccent"
+        android:layout_height="200dp"/>
+
+    <Button
+        android:id="@+id/unSubscribe"
+        android:layout_width="wrap_content"
+        android:text="unSubscribe"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
+</android.support.design.widget.CoordinatorLayout>

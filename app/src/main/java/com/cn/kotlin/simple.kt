@@ -23,7 +23,7 @@ init {
 }
 }
 
-abstract class Animal(name: String)
+//abstract class Animal(name: String)
 
-class Child(name: String, age: Int) : Animal(name)
+//class Child(name: String, age: Int) : Animal(name)
 

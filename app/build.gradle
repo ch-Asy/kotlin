@@ -1,14 +1,16 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+
+//apply plugin: 'android-apt'
+//添加如下代码，应用apt插件
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.cn.kotlin"
-        minSdkVersion 11
-        targetSdkVersion 23
+        minSdkVersion 14
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -19,18 +21,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile "com.android.support:appcompat-v7:$support_version"
-    compile "com.android.support:recyclerview-v7:$support_version"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.jetbrains.anko:anko-common:$anko_version"
-    testCompile 'junit:junit:4.12'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //butterknife依赖注入
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    //Room
+    //    compile 'android.arch.persistence.room:runtime:1.0.0-alpha1'
+    //    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    //测试 Room 迁移
+    //    testCompile 'android.arch.persistence.room:testing:1.0.0'
+    //Room 的 RxJava 支持
+    //    compile 'android.arch.persistence.room:rxjava2:1.0.0'
+    //使用APT生成工具，生成需要的DI代码
+    apt 'com.google.dagger:dagger-compiler:2.5'
+    //JSR250的jar包，使用这个和使用glassFish的那个一样，仅为了使用@Inject 和@Named注解
+    provided 'javax.annotation:jsr250-api:1.0'
+    //Dagger2 的依赖
+    compile 'com.google.dagger:dagger:2.5'
+    compile project(':base')
 }
 buildscript {
     repositories {
@@ -38,5 +52,8 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
     }
+}
+repositories {
+    mavenCentral()
 }
 
