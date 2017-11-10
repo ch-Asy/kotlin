@@ -5,13 +5,19 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ann.http.iml.SubscriberOnNextListener;
+import com.cn.kotlin.HttpCl;
 import com.cn.kotlin.R;
 import com.cn.kotlin.life.dagger.Injectable;
+import com.cn.kotlin.BannerData;
 import com.cn.kotlin.life.model.User;
 import com.emof.base.BaseActivity;
+import com.ann.http.HttpMethods;
+import com.ann.http.ProgressSubscriber;
 import com.emof.iml.LayoutResId;
 
 import javax.inject.Inject;
@@ -35,7 +41,6 @@ public class UserProfileActivity extends BaseActivity implements Injectable {
 
     @Override
     protected void initData() {
-
     }
 
     public void changeUser(View view) {
@@ -46,6 +51,18 @@ public class UserProfileActivity extends BaseActivity implements Injectable {
     @Override
     protected void setToolbar(Bundle savedInstanceState) {
 
+        HttpCl.getInstance(0).banner(new ProgressSubscriber<BannerData>(this,
+                new SubscriberOnNextListener<BannerData>() {
+                    @Override
+                    public void onNext(BannerData bannerData) {
+                        Log.d("-----", bannerData.toString());
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                }, true, true, ""));
     }
 
     @Override

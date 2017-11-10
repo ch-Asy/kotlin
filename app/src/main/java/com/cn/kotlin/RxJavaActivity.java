@@ -66,7 +66,7 @@ public class RxJavaActivity extends AppCompatActivity {
             }
         });
 
-       observable.subscribe(observe);
+       observable.observeOn(AndroidSchedulers.mainThread()).subscribe(observe);
 //
 //        observe.onSubscribe();
 

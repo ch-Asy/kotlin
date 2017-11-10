@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+}
+ext.retrofit_version = "2.3.0"
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //网络请求
+    //retrofit2
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    //解析类
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    //rxjava--retrofit
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    //使用Okhttp进行网络请求的log
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile project(':Base')
+}
