@@ -1,1 +1,1 @@
-include ':app', ':Base', ':HttpVo'
+include ':app', ':Base', ':HttpVo', ':FitLibrary'

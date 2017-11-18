@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Base/Base.iml" filepath="$PROJECT_DIR$/Base/Base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FitLibrary/FitLibrary.iml" filepath="$PROJECT_DIR$/FitLibrary/FitLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/HttpVo/HttpVo.iml" filepath="$PROJECT_DIR$/HttpVo/HttpVo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/kotlin.iml" filepath="$PROJECT_DIR$/kotlin.iml" />
